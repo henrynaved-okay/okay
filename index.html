@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Devotee's Darshan</title>
-<link rel="stylesheet" href="style2.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -15,83 +14,94 @@
   <p>Temple & Pilgrimage Crowd Management System</p>
 </header>
 
-<section id="team">
-  <h2>Our Team</h2>
-  <div class="team-container">
-    <div class="team-member">
-      <img src="aditi.jpg" alt="Kaustubh Arora">
-      <p><strong>Aditi Sharma</strong><br>Leader</p>
-    </div>
-    <div class="team-member">
-      <img src="navneet.jpg" alt="Navneet">
-      <p>Navneet</p>
-    </div>
-    <div class="team-member">
-      <img src="kaustubh.jpg" alt="Aditi Sharma">
-      <p>Kaustubh Arora</p>
-    </div>
-    <div class="team-member">
-      <img src="tanmay.jpg" alt="Tanmay Kumar">
-      <p>Tanmay Kumar</p>
-    </div>
-    <div class="team-member">
-      <img src="yashasvi.jpg" alt="Yashasvi Baranwal">
-      <p>Yashasvi Baranwal</p>
-    </div>
-    <div class="team-member">
-      <img src="naved.jpg" alt="Naved">
-      <p>Naved</p>
-    </div>
-  </div>
-</section>
+<main>
+  <!-- Login -->
+  <section id="login-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter your name" />
+    <button onclick="login()">Login</button>
+  </section>
 
-<section>
-  <h2>AI Crowd Prediction</h2>
-  <div id="predictionResult">Checking...</div>
-</section>
+  <!-- Region Selection -->
+  <section id="region-section" style="display:none;">
+    <h2>Select Your Region</h2>
+    <div class="region-list" id="region-list"></div>
+  </section>
 
-<section>
-  <h2>Live Crowd Counter</h2>
-  <div id="counterBox" class="counter">Loading...</div>
-</section>
+  <!-- Temples list -->
+  <section id="temple-section" style="display:none;">
+    <h2 id="temple-region-header"></h2>
+    <div class="temple-list" id="temple-list"></div>
+  </section>
 
-<section>
-  <h2>Nearby Facilities Map</h2>
-  <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7031673352856!2d70.40195341443116!3d20.888001598518507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395642622e1ed0d9%3A0xf5f873cbb83c030e!2sSomnath%20Temple!5e0!3m2!1sen!2sin!4v1695654012345!5m2!1sen!2sin"
-    allowfullscreen="" loading="lazy">
-  </iframe>
-</section>
+  <!-- Temple details -->
+  <section id="temple-details" style="display:none;"></section>
 
-<section>
-  <h2>Emergency Help</h2>
-  <button id="sosButton">📞 Call SOS</button>
-</section>
+  <!-- Registration -->
+  <section id="registration-section" style="display:none;">
+    <h2>Register for Aarti / Hawan</h2>
+    <label for="aarti-date">Choose Date:</label>
+    <input type="date" id="aarti-date" />
+    <label for="aarti-slot">Choose Time Slot (Less Crowded Slot Highlighted):</label>
+    <select id="aarti-slot"></select>
+    <button onclick="register()">Register</button>
+    <div id="notification" style="display:none;"></div>
+  </section>
 
-<section>
-  <h2>AI Chatbox / Guidance</h2>
-  <input type="text" id="chatInput" placeholder="Ask about crowd or safety...">
-  <button onclick="askAI()">Ask</button>
-  <div id="chatResponse">Awaiting your question...</div>
-</section>
+  <!-- AI Crowd Prediction -->
+  <section>
+    <h2>AI Crowd Prediction</h2>
+    <p>Suggested less crowded slots for darshan:</p>
+    <div id="predictionResult">Loading...</div>
+  </section>
 
-<section>
-  <h2>Book Your Time Slot</h2>
-  <select id="slotSelect">
-    <option value="6AM-8AM">6AM-8AM</option>
-    <option value="9AM-11AM">9AM-11AM</option>
-    <option value="12PM-2PM">12PM-2PM</option>
-    <option value="3PM-5PM">3PM-5PM</option>
-    <option value="6PM-8PM">6PM-8PM</option>
-  </select>
-  <button onclick="bookSlot()">Book Slot</button>
-</section>
+  <!-- Live Crowd Counter -->
+  <section>
+    <h2>Live Crowd Counter</h2>
+    <div id="counterBox" class="counter">Loading...</div>
+  </section>
+
+  <!-- Team Members -->
+  <section>
+    <h2>Our Team</h2>
+    <div class="team-grid">
+      <div class="team-card"><img src="aditi.jpg"><p>Aditi Sharma (Leader)</p></div>
+      <div class="team-card"><img src="navneet.jpg"><p>Navneet</p></div>
+      <div class="team-card"><img src="kaustubh.jpg"><p>Kaustubh Arora</p></div>
+      <div class="team-card"><img src="tanmay.jpg"><p>Tanmay Kumar</p></div>
+      <div class="team-card"><img src="yashasvi.jpg"><p>Yashasvi Baranwal</p></div>
+      <div class="team-card"><img src="naved.jpg"><p>Naved</p></div>
+    </div>
+  </section>
+
+  <!-- Nearby Facilities Map -->
+  <section>
+    <h2>Nearby Facilities Map</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.7031673352856!2d70.40195341443116!3d20.888001598518507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395642622e1ed0d9%3A0xf5f873cbb83c030e!2sSomnath%20Temple!5e0!3m2!1sen!2sin!4v1695654012345!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </section>
+
+  <!-- SOS -->
+  <section>
+    <div id="sos-alert" onclick="raiseSOS()">SOS - Lost Person Alert</div>
+  </section>
+
+  <!-- AI Chatbox -->
+  <section>
+    <h2>AI Guidance</h2>
+    <input type="text" id="chatInput" placeholder="Ask about crowd or safety">
+    <button onclick="askAI()">Ask</button>
+    <div id="chatResponse">Awaiting your question...</div>
+  </section>
+</main>
 
 <footer>
-  <p>Team Name: Darshan Dynamics | Leader: Aditi Sharma | Members: Navneet, Kaustubh, Tanmay, Yashasvi, Naved</p>
+  <p>Team Name: Darshan Dynamics | Leader: Aditi | Members: Navneet, Kaustubh, Tanmay, Yashasvi, Naved</p>
   <p>© 2025 Devotee's Darshan Prototype</p>
 </footer>
 
-<script src="script2.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
